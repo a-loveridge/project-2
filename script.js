@@ -10,11 +10,11 @@ class Pet {
 
     // changing stat by identifying name (called later)
     changeStat(statName, amount) {
-        if (statName === "hunger") {
+        if (statName == "hunger") {
             this.hunger += amount;
-        } else if (statName === "happiness") {
+        } else if (statName == "happiness") {
             this.happiness += amount;
-        } else if (statName === "energy") {
+        } else if (statName == "energy") {
             this.energy += amount;
         }
 
