@@ -9,10 +9,43 @@ export class Game {
         this.actions = [];
     }
 
+    // error exception addition: pet name
+    handleNameInput() {
+        const input = document.getElementById("petName");
+        const errorText = document.querySelector(".error");
+
+        try {
+            const name = input.value.trim();
+
+            if (name === "") {
+                throw new Error("Error: Your pet must have a name!");
+            }
+            if (name.length > 15) {
+                throw new Error("Error: Your pet's name can't be more than 15 characters");
+            }
+            if (!/^[a-zA-Z]+$/.test(name)) {
+                throw new Error("Error: Your pet's name can only contain letters")
+            }
+
+            document.getElementById("displayName").textContent = name;
+            this.petName = name;
+            document.getElementById("nameSetup").style.display = "none";
+            document.getElementById("gameArea").style.display = "block";
+
+            this.startGame();
+            this.createActions();
+            this.setUpButtons();
+        }
+        catch (e) {
+            errorText.textContent = e.message;
+        }
+    }
+
     // create pet at start of game
     startGame() {
         this.pet = new Pet(50, 50, 50);
         this.pet.updateDisplay();
+        document.querySelector(".message").textContent = `Take care of ${this.petName}!`;
     }
 
     // create actions to call for the buttons
@@ -23,7 +56,7 @@ export class Game {
                 {stat: "hunger", amount: 30},
                 {stat: "energy", amount: -5}
             ], 
-            "Your pet enjoyed the meal!" 
+            `${this.petName} enjoyed the meal!`
         );
         this.actions.push(feedPet);
 
@@ -34,7 +67,7 @@ export class Game {
                 {stat: "hunger", amount: -15},
                 {stat: "energy", amount: -20}
             ], 
-            "Your pet had a lot of fun!"
+            `${this.petName} had a lot of fun!`
         );
         this.actions.push(play);
 
@@ -44,7 +77,7 @@ export class Game {
                 {stat: "hunger", amount: -10},
                 {stat: "energy", amount: 40}
             ], 
-            "Your pet had a great nap!"
+            `${this.petName} had a great nap!`
         );
         this.actions.push(rest);
 
@@ -56,7 +89,7 @@ export class Game {
                 {stat: "energy", amount: 10}
             ], 
             "Special treat!",
-            "Your pet loves it! And you of course..."
+            `${this.petName} loves it! And you of course...`
         );
         this.actions.push(treat);
     }

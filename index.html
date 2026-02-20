@@ -11,29 +11,40 @@
 <body>
     <div class="content">
         <h1>Virtual Pet</h1>
-        <h2>Meet Buddy!</h2>
-        <p class="buddy">🐕</p>
 
-        <div class="stats">
-            <div class="stat">
-                <p>Hunger: <span id="hunger">50</span></p>
+        <div class="name-setup" id="nameSetup">
+            <input type="text" id="petName" class="pet-name" placeholder="Enter your pet's name">
+            <button id="startButton" class="start-button">Start Game</button>
+            <p class="error" style="color: red;"></p>
+        </div>
+
+        <div id="gameArea" style="display: none;">
+            <h2>Meet <span id="displayName"></span>!</h2>
+            <p class="buddy">🐕</p>
+
+            <div class="stats">
+                <div class="stat">
+                    <p>Hunger: <span id="hunger">50</span></p>
+                </div>
+                <div class="stat">
+                    <p>Happiness: <span id="happiness">50</span></p>
+                </div>
+                <div class="stat">
+                    <p>Energy: <span id="energy">50</span></p>
+                </div>
             </div>
-            <div class="stat">
-                <p>Happiness: <span id="happiness">50</span></p>
-            </div>
-            <div class="stat">
-                <p>Energy: <span id="energy">50</span></p>
+
+            <p id="message" class="message"></p>
+
+            <div class="buttons">
+                <button class="action">Feed Pet</button>
+                <button class="action">Play with Pet</button>
+                <button class="action">Let Pet Rest</button>
+                <button class="action">Give Special Treat</button>
             </div>
         </div>
 
-        <p id="message" class="message">Take care of your pet!</p>
-
-        <div class="buttons">
-            <button class="action">Feed Pet</button>
-            <button class="action">Play with Pet</button>
-            <button class="action">Let Pet Rest</button>
-            <button class="action">Give Special Treat</button>
-        </div>
+        
     </div>
     
 </body>
