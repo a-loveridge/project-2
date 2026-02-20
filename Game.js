@@ -38,6 +38,7 @@ export class Game {
         }
         catch (e) {
             errorText.textContent = e.message;
+            console.log("There is an error with the name you chose. Check the website!");
         }
     }
 
